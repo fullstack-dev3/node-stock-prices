@@ -4,12 +4,12 @@ const axios = require('axios');
 const app = express();
 const PORT = 3000;
 
-app.get('/stock-price', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const { symbol } = req.query;
     
     if (!symbol) {
-      return res.status(400).json({ error: 'Symbol parameter is required' });
+      return res.status(400).json({ error: 'Symbol parameter is required. Ex: AAPL' });
     }
 
     const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`;
